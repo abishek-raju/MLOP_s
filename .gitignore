@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 #folders to ignore
-/session_1/reduced_data
+/session_1/reduced_data/*
