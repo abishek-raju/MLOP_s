@@ -132,6 +132,7 @@ dmypy.json
 /session_1/reduced_data/*
 .ipynb_checkpoints
 #files to ignore
-
+/session_1/metrics.csv
+/session_1/model_pytorch.h5
 
 
