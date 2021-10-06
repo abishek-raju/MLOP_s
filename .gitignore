@@ -130,7 +130,7 @@ dmypy.json
 
 #folders to ignore
 /session_1/reduced_data/*
-
+.ipynb_checkpoints
 #files to ignore
 
 
