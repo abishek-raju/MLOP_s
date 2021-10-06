@@ -1,0 +1,5 @@
+outs:
+- md5: ae9648b2dcc35e6c9bd93bb6b275b222.dir
+  size: 83178327
+  nfiles: 2006
+  path: reduced_data
