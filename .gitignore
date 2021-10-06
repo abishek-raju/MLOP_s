@@ -131,6 +131,7 @@ dmypy.json
 #folders to ignore
 /session_1/reduced_data/*
 .ipynb_checkpoints
+.pytest_cache
 #files to ignore
 /session_1/model_pytorch.h5
 
