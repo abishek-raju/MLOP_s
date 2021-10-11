@@ -1,0 +1,5 @@
+outs:
+- md5: 6345983ca071d6d9ec8f0d0d5f71ea51.dir
+  size: 5159
+  nfiles: 2
+  path: mnist_test_images
