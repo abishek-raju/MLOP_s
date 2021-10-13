@@ -35,7 +35,7 @@ future==0.18.2
 gitdb==4.0.7
 GitPython==3.1.24
 grandalf==0.6
-gunicorn==20.0.4
+gunicorn==20.1.0
 idna==3.2
 importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1631906757572/work
 ipykernel==6.4.1
