@@ -134,5 +134,5 @@ dmypy.json
 .pytest_cache
 #files to ignore
 /session_1/model_pytorch.h5
-
+/Flask_Heroku_Introduction/Mnist_model/upload_folder
 
