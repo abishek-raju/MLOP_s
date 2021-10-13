@@ -72,7 +72,7 @@ class MnistModel(nn.Module):
 
         return x
 
-def predict_single_image(img,model_path):
+def predict_single_image(img_path,model_path,top_predictions_to_output = 5):
     """
     Function to process single image
 
@@ -82,7 +82,7 @@ def predict_single_image(img,model_path):
     Outputs : 
             
     """
-    img = Image.open("/home/rampfire/MLOP_s/Flask_Heroku_Introduction/mnist_test_images/mnist_3_sample_1.png")
+    img = Image.open(img_path)
     img = img.convert('L')
     img = img.resize((28, 28))
     # img.save(r'templates\image.png')
@@ -90,9 +90,10 @@ def predict_single_image(img,model_path):
     img = img.reshape((1, 28, 28))
     img = torch.tensor(img, dtype=torch.float).unsqueeze(0)
     model = MnistModel(classes=10)
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path ,map_location=torch.device('cpu')))
     model.eval()
     outputs = model(x=img)
-    probs = torch.exp(outputs.data)[0] * 100
-    return probs.argmax().item()
+    probs = torch.exp(outputs.data)
+    top_probs, top_labs = probs.topk(top_predictions_to_output)
+    return top_probs, top_labs
 
