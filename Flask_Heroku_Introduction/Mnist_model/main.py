@@ -23,7 +23,6 @@ def welcome_and_upload():
 def predict():
     if request.method == 'POST':
         if 'file' not in request.files:
-            flash('No file part')
             return redirect(request.url)
         file = request.files['file']
         # If the user does not select a file, the browser submits an
@@ -35,6 +34,14 @@ def predict():
             file_full_path = os.path.join(UPLOAD_FOLDER, filename)
             file.save(file_full_path)
             # return redirect(url_for('download_file', name=filename))
+            if os.path.exists("mnist_model.pt"):
+                pass
+            else:
+                import gdown
+                url = "https://drive.google.com/uc?id=1gVfFUEO28Lvu6pmRFAKUg7Wpgujwnif2"
+                output = 'mnist_model.pt'
+                gdown.download(url, output,quiet=False) 
+
             print("loaded trained model")
             predicted_probs,predicted_class = predict_single_image(file_full_path,"mnist_model.pt",1)
             return jsonify({'Predicted_Probability': predicted_probs.tolist(),
