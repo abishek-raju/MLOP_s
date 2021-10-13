@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: flask ./Flask_Heroku_Introduction/Mnist_model/main.py
