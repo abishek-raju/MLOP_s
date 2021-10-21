@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        </style>
+    </head>
+   <body>
+      <div style="width: 150;float: left;">
+         <div>
+            <div style="margin-left : 0; width: 150; height: 50px; float: left; background-color:#808080;">
+
+            </div>
+            <div style="margin-left : 0; width: 150; height: 625px; float: left; background-color:#4285F4;">
+                <div style="margin-top : 0;text-align: center;">
+                    <a href="{{url_for('welcome_and_upload')}}" style="color:black; font-size:30px">Home</a>
+                 </div>
+                 <div style="margin-top : 0;text-align: center;">
+                    <a style="text-align: center; color:black; font-size:30px;" href="{{url_for('gallery')}}">Gallery</a><br>
+                 </div>
+                 <div style="margin-top : 0;text-align: center;">
+                    <a style="text-align: center; color:black; font-size:30px;" href="{{url_for('about')}}">About</a><br>
+                 </div>
+               
+               
+               
+            </div>
+         </div>
+      </div>
+      <div style="margin-left : 0; width: 1000;float: left;">
+         <div>
+            <div style = "margin-top : 0; height: 50px; float: top; background-color:#7FFFD4;">
+
+            </div>
+            <div>
+               <h1 style="text-align: center;">Details</h1>
+            </div>
+            <div>
+                <p style="text-align: center;">This page provides the info.</p>
+            </div>
+         </div>
+      </div>
+      <div style="margin-left : 0; width: 150;float: left;">
+         <div>
+            <div style = "margin-top : 0; height: 675px; float: top; background-color:whitesmoke;">
+               <p style="margin-top : 0;text-align: center;">ADS</p>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
+<!-- https://stackoverflow.com/questions/60167773/upload-multiple-files-or-a-whole-folder-through-flask -->

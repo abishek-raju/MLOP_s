@@ -1,0 +1,39 @@
+<html>
+<head>
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<center>
+    <h1>Image and Predictions</h1>
+</center>
+<center>
+    <table width="500" border="5">
+        <tr>
+            <td width="25%">IMAGES</td>
+            <td>PREDICTIONS</td>
+        </tr>
+        <!-- <tr>
+            <td>
+                <img height="125" width="125" src="/home/rampfire/Downloads/german_shepard.jpeg" />
+            </td>
+        </tr> -->
+        {% for name in image_name %}
+            <tr>
+                <td>
+                    <a href="{{url_for('details',name = name)}}">
+                        <img height="125" width="125" src="{{url_for('static', filename=name)}}"/>
+                    </a>
+                </td>
+                <td>{{image_name[name]["predicted_class"][0]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</center>
+
+</body>
+</html>

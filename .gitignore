@@ -132,6 +132,7 @@ dmypy.json
 /session_1/reduced_data/*
 .ipynb_checkpoints
 .pytest_cache
+.vscode/*
 #files to ignore
 /session_1/model_pytorch.h5
 /Flask_Heroku_Introduction/Mnist_model/upload_folder
