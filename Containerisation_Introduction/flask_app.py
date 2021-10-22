@@ -10,9 +10,12 @@ import os
 import shutil
 from pathlib import Path
 import cv2
-import ntplib
-from time import ctime
-current_time_object = ntplib.NTPClient()
+# import ntplib
+# from time import ctime
+# current_time_object = ntplib.NTPClient()
+from datetime import datetime
+import pytz
+tz_NY = pytz.timezone('Asia/Kolkata')
 UPLOAD_FOLDER = os.path.join(Path(__file__).parent,'upload_folder')
 STATIC_FOLDER = os.path.join(Path(__file__).parent,'static')
 
@@ -63,14 +66,15 @@ def predict():
                 
                 # return jsonify({'Predicted_Probability': predicted_probs,
                 #                 'Predicted_Class' : predicted_class})
-                response = current_time_object.request('asia.pool.ntp.org', version=3)
-
+                # response = current_time_object.request('asia.pool.ntp.org', version=3)
+                now = datetime.now(tz_NY)
+                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
                 classified_json.update({filename:{"predicted_probs" : predicted_probs,
                                                 "predicted_class" : predicted_class,
-                                                "timestamp" : ctime(response.tx_time)}})
+                                                "timestamp" : dt_string}})
                 uploaded_json.update({filename:{"predicted_probs" : predicted_probs,
                                 "predicted_class" : predicted_class,
-                                "timestamp" : ctime(response.tx_time)}})
+                                "timestamp" : dt_string}})
 
             else:
                 return "file format does not match"
@@ -116,5 +120,5 @@ def about():
 
 
 if __name__ == '__main__':
-   app.run(host="0.0.0.0",debug = True)
+   app.run(host="0.0.0.0",port = 5000,debug = False)
     # app.run(port = 5000)
