@@ -1,7 +1,7 @@
 # https://github.com/Cadene/pretrained-models.pytorch
-import pretrainedmodels
+# import pretrainedmodels
 import torch
-import pretrainedmodels.utils as utils
+# import pretrainedmodels.utils as utils
 import pickle
 import urllib.request as urllib2
 # print(pretrainedmodels.pretrained_settings['resnet18'])

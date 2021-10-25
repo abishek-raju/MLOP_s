@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request,render_template,flash,redirect,url_for,send_from_directory
-# from inference import classify_image
 try:
     from .inference import classify_image     # "myapp" case
 except:
@@ -19,10 +18,10 @@ tz_NY = pytz.timezone('Asia/Kolkata')
 UPLOAD_FOLDER = os.path.join(Path(__file__).parent,'upload_folder')
 STATIC_FOLDER = os.path.join(Path(__file__).parent,'static')
 
-for dir_list in [UPLOAD_FOLDER,STATIC_FOLDER]:
-    for root, dirs, files in os.walk(dir_list):
-        for file in files:
-            os.remove(os.path.join(root, file))
+# for dir_list in [UPLOAD_FOLDER,STATIC_FOLDER]:
+#     for root, dirs, files in os.walk(dir_list):
+#         for file in files:
+#             os.remove(os.path.join(root, file))
 
 
 
@@ -40,6 +39,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def welcome_and_upload():
     return render_template('welcome_upload.html')
+    # return 'Flask Dockerized and deployed to Heroku flask_app'
 
 
 @app.route('/uploader', methods=['POST','GET'])
@@ -61,8 +61,8 @@ def predict():
                 file.save(file_full_path_upload_folder)
                 shutil.copy(file_full_path_upload_folder, file_full_path_static_folder)
                 # return redirect(url_for('download_file', name=filename))
-                predicted_probs,predicted_class = None,None
-                predicted_probs,predicted_class = classify_image(file_full_path_upload_folder,5)
+                predicted_probs,predicted_class = [],[]
+                # predicted_probs,predicted_class = classify_image(file_full_path_upload_folder,5)
                 
                 # return jsonify({'Predicted_Probability': predicted_probs,
                 #                 'Predicted_Class' : predicted_class})
@@ -118,7 +118,7 @@ def details(name):
 def about():
     return render_template('about.html')
 
-
+port = int(os.environ.get("PORT", 5000))
 if __name__ == '__main__':
-   app.run(host="0.0.0.0",port = 5000,debug = False)
+   app.run(debug=True,host='0.0.0.0',port=port)
     # app.run(port = 5000)
