@@ -4,6 +4,6 @@ build:
 deploy:
   resources:
     limits:
-      memory: 450M
+      memory: 400M
     reservations:
       memory: 200M
