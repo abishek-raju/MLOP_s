@@ -62,7 +62,7 @@ def predict():
                 shutil.copy(file_full_path_upload_folder, file_full_path_static_folder)
                 # return redirect(url_for('download_file', name=filename))
                 predicted_probs,predicted_class = [],[]
-                # predicted_probs,predicted_class = classify_image(file_full_path_upload_folder,5)
+                predicted_probs,predicted_class = classify_image(file_full_path_upload_folder,5)
                 
                 # return jsonify({'Predicted_Probability': predicted_probs,
                 #                 'Predicted_Class' : predicted_class})

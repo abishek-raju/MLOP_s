@@ -1,3 +1,9 @@
 build:
   docker:
     web: Dockerfile
+deploy:
+  resources:
+    limits:
+      memory: 450M
+    reservations:
+      memory: 200M

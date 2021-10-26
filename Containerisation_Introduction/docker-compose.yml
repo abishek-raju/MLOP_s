@@ -1,0 +1,9 @@
+services:
+  flask-app:
+    build: .
+    deploy:
+      resources:
+        limits:
+          memory: 450M
+        reservations:
+          memory: 200M

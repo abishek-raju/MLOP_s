@@ -1,20 +1,32 @@
 # https://github.com/Cadene/pretrained-models.pytorch
 # import pretrainedmodels
 import torch
-# import pretrainedmodels.utils as utils
+import torchvision.models as models
+import torchvision.transforms as transforms
+import pretrainedmodels.utils as utils
 import pickle
 import urllib.request as urllib2
 # print(pretrainedmodels.pretrained_settings['resnet18'])
 
 
 def classify_image(path_img,top_predictions_to_output = 1):
-    model_name = 'resnet18'
-    model = pretrainedmodels.__dict__[model_name]()
+    model = models.resnet18(pretrained=True)
+    # model_name = 'resnet18'
+    # model = pretrainedmodels.__dict__[model_name]()
     model.eval()
     load_img = utils.LoadImage()
-    tf_img = utils.TransformImage(model) 
+    # tf_img = utils.TransformImage(model) 
     input_img = load_img(path_img)
-    input_tensor = tf_img(input_img)         # 3x400x225 -> 3x299x299 size may differ
+    # input_tensor = tf_img(input_img)         # 3x400x225 -> 3x299x299 size may differ
+    transform = transforms.Compose(
+                [
+                    transforms.Resize(224),
+                    transforms.CenterCrop(224),
+                    transforms.ToTensor(),
+                    transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])
+                ])
+    input_tensor = transform(input_img)
     input_tensor = input_tensor.unsqueeze(0) # 3x299x299 -> 1x3x299x299
     input = torch.autograd.Variable(input_tensor,
         requires_grad=False)
